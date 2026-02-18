@@ -1,10 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import { useSelector } from "react-redux";
-import { RootState } from "@/Store/store";
+import { useGetOrders } from "@/Hooks/useOrders";
 import {
   Package,
   Search,
@@ -177,25 +174,14 @@ const OrderCard = ({ order }: { order: any }) => {
 };
 
 export default function OrdersPage() {
-  const { user } = useSelector((state: RootState) => state.auth);
   const [searchTerm, setSearchTerm] = useState("");
   const [filter, setFilter] = useState("All Orders");
 
-  const {
-    data: orders,
-    isLoading,
-    error,
-  } = useQuery({
-    queryKey: ["user-orders", user?.id],
-    queryFn: async () => {
-      if (!user?.id) return [];
-      const response = await axios.get(
-        `https://ecommerce.routemisr.com/api/v1/orders/user/${user.id}`,
-      );
-      return response.data;
-    },
-    enabled: !!user?.id,
-  });
+  const { data: ordersData, isLoading, isError: error } = useGetOrders();
+
+  const orders = Array.isArray(ordersData)
+    ? ordersData
+    : ordersData?.data || [];
 
   if (isLoading) {
     return (

@@ -7,18 +7,12 @@ import { loginSchema, type LoginFormData } from "../../Schemas/login.schema";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ICONS } from "@/Constants/icons.constants";
 import Link from "next/link";
-import { signinAction } from "../../Actions/signin.action";
-import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
-import { setAuth } from "@/Store/Slices/authSlice";
 import { ROUTES } from "@/Constants/app.constants";
+import { useLogin } from "@/Hooks/useAuth";
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
-  const [state, formAction, isPending] = useActionState(signinAction, null);
-  const router = useRouter();
-  const dispatch = useDispatch();
+  const { mutate: login, isPending } = useLogin();
 
   const {
     register,
@@ -29,24 +23,8 @@ export default function LoginForm() {
     mode: "onChange",
   });
 
-  useEffect(() => {
-    if (state) {
-      if (state.success) {
-        toast.success(state.message);
-        if (state.user && state.token) {
-          dispatch(setAuth({ user: state.user, token: state.token }));
-        }
-        router.push(ROUTES.HOME); // Redirect to home on success
-      } else {
-        toast.error(state.message);
-      }
-    }
-  }, [state, router, dispatch]);
-
   const onSubmit = (data: LoginFormData) => {
-    startTransition(() => {
-      formAction(data);
-    });
+    login(data);
   };
 
   return (

@@ -7,13 +7,9 @@ import { signupSchema, type SignupFormData } from "../../Schemas/signup.schema";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ICONS } from "@/Constants/icons.constants";
 import Link from "next/link";
-import { signupAction } from "../../Actions/signup.action";
-import { toast } from "react-toastify";
-import { useRouter } from "next/navigation";
-import { useDispatch } from "react-redux";
-import { setAuth } from "@/Store/Slices/authSlice";
-import { CheckCircle2 } from "lucide-react";
 import { ROUTES } from "@/Constants/app.constants";
+import { useRegister } from "@/Hooks/useAuth";
+import { CheckCircle2 } from "lucide-react";
 
 export default function SignupForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -21,9 +17,7 @@ export default function SignupForm() {
   const [passwordStrength, setPasswordStrength] = useState<
     "Weak" | "Medium" | "Strong" | ""
   >("");
-  const [state, formAction, isPending] = useActionState(signupAction, null);
-  const router = useRouter();
-  const dispatch = useDispatch();
+  const { mutate: signup, isPending } = useRegister();
 
   const {
     register,
@@ -37,31 +31,6 @@ export default function SignupForm() {
   });
 
   const password = watch("password", "");
-
-  useEffect(() => {
-    if (state) {
-      if (state.success) {
-        toast.success(state.message);
-        if (state.user && state.token) {
-          dispatch(setAuth({ user: state.user, token: state.token }));
-          router.push(ROUTES.HOME);
-        } else {
-          router.push(ROUTES.LOGIN);
-        }
-      } else {
-        toast.error(state.message);
-        if (state.errors) {
-          // Map API errors to react-hook-form fields
-          Object.keys(state.errors).forEach((key) => {
-            setError(key as any, {
-              type: "server",
-              message: state.errors[key].message || state.errors[key],
-            });
-          });
-        }
-      }
-    }
-  }, [state, router, setError]);
 
   const checkPasswordStrength = (value: string) => {
     if (!value) return setPasswordStrength("");
@@ -82,9 +51,7 @@ export default function SignupForm() {
       rePassword: data.confirmPassword,
       phone: data.phone,
     };
-    startTransition(() => {
-      formAction(apiData);
-    });
+    signup(apiData);
   };
 
   return (
