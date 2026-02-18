@@ -18,6 +18,7 @@ export default function Navbar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isCategoryMenuOpen, setIsCategoryMenuOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const profileRef = useRef<HTMLDivElement>(null);
   const { categories, isLoading: isCategoriesLoading } = useCategories();
 
@@ -53,6 +54,15 @@ export default function Navbar() {
     dispatch(logout());
     setIsProfileOpen(false);
     router.push("/auth/login");
+  };
+
+  const handleSearch = (e?: React.FormEvent) => {
+    e?.preventDefault();
+    const trimmed = searchQuery.trim();
+    if (trimmed) {
+      router.push(`/search?q=${encodeURIComponent(trimmed)}`);
+      setIsSidebarOpen(false);
+    }
   };
 
   const navLinks = [
@@ -149,21 +159,29 @@ export default function Navbar() {
           </Link>
 
           {/* Section 2: Search Bar (Desktop) */}
-          <div className="hidden lg:block relative flex-1 max-w-[550px] mx-10 group">
+          <form
+            onSubmit={handleSearch}
+            className="hidden lg:block relative flex-1 max-w-[550px] mx-10 group"
+          >
             <div className="relative w-full border border-[#E5E5E5] rounded-[6px] transition-all focus-within:border-[#00B207] focus-within:ring-[3px] focus-within:ring-[#00B207]/10 h-[46px]">
               <input
                 type="text"
                 placeholder="Search for products..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full h-full pl-5 pr-[50px] text-[14px] text-[#333333] placeholder-[#999999] bg-transparent outline-none"
               />
-              <button className="absolute right-0 top-0 h-full w-[50px] flex items-center justify-center text-[#666666] hover:text-[#00B207] transition-colors">
+              <button
+                type="submit"
+                className="absolute right-0 top-0 h-full w-[50px] flex items-center justify-center text-[#666666] hover:text-[#00B207] transition-colors"
+              >
                 <FontAwesomeIcon
                   icon={ICONS.common.search}
                   className="text-[20px]"
                 />
               </button>
             </div>
-          </div>
+          </form>
 
           {/* Section 3: Action Icons */}
           <div className="flex items-center gap-6 lg:gap-7">
@@ -504,17 +522,21 @@ export default function Navbar() {
             {/* Content */}
             <div className="flex-1 overflow-y-auto p-5 space-y-6">
               {/* Search */}
-              <div className="relative">
+              <form onSubmit={handleSearch} className="relative">
                 <input
                   type="text"
                   placeholder="Search store..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
                   className="w-full h-11 pl-4 pr-10 rounded-lg bg-[#F5F5F5] border-none text-[14px] focus:ring-2 focus:ring-[#00B207]/20 outline-none"
                 />
-                <FontAwesomeIcon
-                  icon={ICONS.common.search}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"
-                />
-              </div>
+                <button
+                  type="submit"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-[#00B207] transition-colors"
+                >
+                  <FontAwesomeIcon icon={ICONS.common.search} />
+                </button>
+              </form>
 
               {/* Links */}
               <div className="space-y-4">

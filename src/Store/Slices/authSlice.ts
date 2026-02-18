@@ -75,6 +75,9 @@ const authSlice = createSlice({
       state.isAuthenticated = true;
       state.error = null;
       setCookie("token", action.payload.token);
+      if (typeof window !== "undefined") {
+        localStorage.setItem("user", JSON.stringify(action.payload.user));
+      }
     },
     logout: (state) => {
       state.user = null;
@@ -82,6 +85,9 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
       state.error = null;
       deleteCookie("token");
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("user");
+      }
     },
     clearError: (state) => {
       state.error = null;
@@ -94,7 +100,16 @@ const authSlice = createSlice({
       })
       .addCase(verifyToken.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.user = action.payload.user;
+        // Merge decoded JWT data with saved user data from localStorage
+        // so fields like email (not in JWT) are preserved
+        let savedUser: Partial<User> = {};
+        if (typeof window !== "undefined") {
+          try {
+            const stored = localStorage.getItem("user");
+            if (stored) savedUser = JSON.parse(stored);
+          } catch {}
+        }
+        state.user = { ...savedUser, ...action.payload.user } as User;
         state.token = action.payload.token;
         state.isAuthenticated = true;
       })
