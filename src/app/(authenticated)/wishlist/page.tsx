@@ -390,31 +390,31 @@ export default function WishlistPage() {
                 name: "Fresh Broccoli (1pc)",
                 cat: "Fruits & Vegetables",
                 price: 1.79,
-                img: "https://ecommerce.routemisr.com/api/v1/projects/605c364c12579df67557e935/products/605c364c12579df67557e935-1.jpeg",
+                img: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=200&h=200&fit=crop",
               },
               {
                 name: "Greek Yogurt (32oz)",
                 cat: "Dairy & Eggs",
                 price: 4.49,
-                img: "https://ecommerce.routemisr.com/api/v1/projects/605c364c12579df67557e935/products/605c364c12579df67557e935-2.jpeg",
+                img: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=200&h=200&fit=crop",
               },
               {
                 name: "Organic Brown Eggs (12pcs)",
                 cat: "Dairy & Eggs",
                 price: 3.99,
-                img: "https://ecommerce.routemisr.com/api/v1/projects/605c364c12579df67557e935/products/605c364c12579df67557e935-3.jpeg",
+                img: "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=200&h=200&fit=crop",
               },
               {
                 name: "Organic Fresh Apples (1kg)",
                 cat: "Fruits & Vegetables",
                 price: 3.99,
-                img: "https://ecommerce.routemisr.com/api/v1/projects/605c364c12579df67557e935/products/605c364c12579df67557e935-4.jpeg",
+                img: "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=200&h=200&fit=crop",
               },
               {
                 name: "Artisan Sourdough Bread",
                 cat: "Bakery & Snacks",
                 price: 3.99,
-                img: "https://ecommerce.routemisr.com/api/v1/projects/605c364c12579df67557e935/products/605c364c12579df67557e935-5.jpeg",
+                img: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=200&h=200&fit=crop",
               },
             ].map((p, i) => (
               <div
