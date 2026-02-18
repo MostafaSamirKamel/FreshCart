@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
 import Link from "next/link";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
@@ -17,7 +17,7 @@ import {
 import ProductCard from "@/Features/Home/Components/productCard";
 import { ProductCardSkeleton } from "@/Components/Shared/Skeleton";
 
-export default function SearchPage() {
+function SearchPageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const query = searchParams.get("q") || "";
@@ -205,5 +205,19 @@ export default function SearchPage() {
         )}
       </div>
     </div>
+  );
+}
+
+export default function SearchPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="bg-[#F9F9F9] min-h-screen flex items-center justify-center">
+          <div className="animate-spin w-8 h-8 border-4 border-[#00B207] border-t-transparent rounded-full" />
+        </div>
+      }
+    >
+      <SearchPageContent />
+    </Suspense>
   );
 }
