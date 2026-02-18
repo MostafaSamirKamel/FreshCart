@@ -1,4 +1,4 @@
-import OffersScreen from "@/Features/Home/Screens/offers.screen";
+import DealsScreen from "@/Features/Home/Screens/deals.screen";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -7,6 +7,6 @@ export const metadata: Metadata = {
     "Save big on fresh produce and daily essentials with our exclusive deals.",
 };
 
-export default function OffersPage() {
-  return <OffersScreen />;
+export default function DealsPage() {
+  return <DealsScreen />;
 }

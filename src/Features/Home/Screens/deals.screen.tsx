@@ -5,7 +5,7 @@ import DealsSection from "@/Features/Home/Components/dealsSection";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
-export default function OffersScreen() {
+export default function DealsScreen() {
   return (
     <main className="bg-white min-h-screen">
       {/* Breadcrumb */}
