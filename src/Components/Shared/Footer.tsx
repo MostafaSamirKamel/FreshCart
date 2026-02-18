@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ICONS } from "@/Constants/icons.constants";
+import { ROUTES } from "@/Constants/app.constants";
 
 export default function Footer() {
   return (
@@ -112,7 +113,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/products"
+                  href={ROUTES.PRODUCTS}
                   className="text-gray-400 hover:text-primary-500 text-sm transition-colors"
                 >
                   All Products
@@ -120,7 +121,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/categories"
+                  href={ROUTES.CATEGORIES}
                   className="text-gray-400 hover:text-primary-500 text-sm transition-colors"
                 >
                   Categories
@@ -128,7 +129,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/brands"
+                  href={ROUTES.BRANDS}
                   className="text-gray-400 hover:text-primary-500 text-sm transition-colors"
                 >
                   Brands
@@ -136,7 +137,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/compare"
+                  href={ROUTES.COMPARE}
                   className="text-gray-400 hover:text-primary-500 text-sm transition-colors"
                 >
                   Compare
@@ -175,7 +176,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/profile"
+                  href={ROUTES.PROFILE}
                   className="text-gray-400 hover:text-primary-500 text-sm transition-colors"
                 >
                   My Account
@@ -183,7 +184,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/orders"
+                  href={ROUTES.ORDERS}
                   className="text-gray-400 hover:text-primary-500 text-sm transition-colors"
                 >
                   Order History
@@ -191,7 +192,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/wishlist"
+                  href={ROUTES.WISHLIST}
                   className="text-gray-400 hover:text-primary-500 text-sm transition-colors"
                 >
                   Wishlist
@@ -199,7 +200,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/cart"
+                  href={ROUTES.CART}
                   className="text-gray-400 hover:text-primary-500 text-sm transition-colors"
                 >
                   Shopping Cart
@@ -207,7 +208,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/auth/login"
+                  href={ROUTES.LOGIN}
                   className="text-gray-400 hover:text-primary-500 text-sm transition-colors"
                 >
                   Sign In
@@ -215,7 +216,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/auth/signup"
+                  href={ROUTES.SIGNUP}
                   className="text-gray-400 hover:text-primary-500 text-sm transition-colors"
                 >
                   Create Account
@@ -230,7 +231,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/about"
+                  href={ROUTES.ABOUT}
                   className="text-gray-400 hover:text-primary-500 text-sm transition-colors"
                 >
                   About Us
@@ -238,7 +239,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/contact"
+                  href={ROUTES.CONTACT}
                   className="text-gray-400 hover:text-primary-500 text-sm transition-colors"
                 >
                   Contact Us
@@ -246,7 +247,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/help"
+                  href={ROUTES.HELP}
                   className="text-gray-400 hover:text-primary-500 text-sm transition-colors"
                 >
                   Help Center
@@ -254,7 +255,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/shipping"
+                  href={ROUTES.SHIPPING_INFO}
                   className="text-gray-400 hover:text-primary-500 text-sm transition-colors"
                 >
                   Shipping Info
@@ -262,7 +263,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/returns"
+                  href={ROUTES.RETURNS}
                   className="text-gray-400 hover:text-primary-500 text-sm transition-colors"
                 >
                   Returns & Refunds
@@ -270,7 +271,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/track-order"
+                  href={ROUTES.TRACK}
                   className="text-gray-400 hover:text-primary-500 text-sm transition-colors"
                 >
                   Track Order
@@ -285,7 +286,7 @@ export default function Footer() {
             <ul className="space-y-3">
               <li>
                 <Link
-                  href="/privacy"
+                  href={ROUTES.PRIVACY}
                   className="text-gray-400 hover:text-primary-500 text-sm transition-colors"
                 >
                   Privacy Policy
@@ -293,7 +294,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/terms"
+                  href={ROUTES.TERMS}
                   className="text-gray-400 hover:text-primary-500 text-sm transition-colors"
                 >
                   Terms of Service
@@ -301,7 +302,7 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/cookies"
+                  href={ROUTES.COOKIE_POLICY}
                   className="text-gray-400 hover:text-primary-500 text-sm transition-colors"
                 >
                   Cookie Policy

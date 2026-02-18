@@ -9,6 +9,7 @@ import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 import Link from "next/link";
 import Image from "next/image";
+import { ROUTES } from "@/Constants/app.constants";
 import slider1 from "@/assets/images/home-slider-1.png";
 
 const slides = [
@@ -18,7 +19,7 @@ const slides = [
     subtitle: "Get up to 30% off on your first order",
     image: slider1,
     cta: "Shop Now",
-    link: "/products",
+    link: ROUTES.PRODUCTS,
   },
   {
     id: 2,
@@ -27,7 +28,7 @@ const slides = [
     image:
       "https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1474&auto=format&fit=crop",
     cta: "View Deals",
-    link: "/deals",
+    link: ROUTES.DEALS,
   },
 ];
 
@@ -93,7 +94,7 @@ export default function HeroSlider() {
                     {slide.cta}
                   </Link>
                   <Link
-                    href="/categories"
+                    href={ROUTES.CATEGORIES}
                     className="btn btn-outline border-white text-white hover:bg-white hover:text-primary-800"
                   >
                     Browse Categories

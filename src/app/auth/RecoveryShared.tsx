@@ -3,6 +3,7 @@
 import React from "react";
 import { ShieldCheck, Headset, HelpCircle, Mail } from "lucide-react";
 import Link from "next/link";
+import { ROUTES } from "@/Constants/app.constants";
 
 interface RecoveryCardProps {
   icon: React.ReactNode;
@@ -89,14 +90,14 @@ export const HelpSection = () => {
           title="Contact Support"
           description="Our customer support team is available 24/7 to assist you."
           linkText="Contact Us"
-          href="/contact"
+          href={ROUTES.CONTACT}
         />
         <HelpCard
           icon={<HelpCircle size={24} />}
           title="FAQs"
           description="Find answers to frequently asked questions about your account."
           linkText="View FAQs"
-          href="/faqs"
+          href={ROUTES.FAQS}
         />
         <HelpCard
           icon={<Mail size={24} />}

@@ -56,13 +56,13 @@ export default function Navbar() {
   };
 
   const navLinks = [
-    { label: "Home", href: "/" },
-    { label: "Shop", href: "/products" },
+    { label: "Home", href: ROUTES.HOME },
+    { label: "Shop", href: ROUTES.PRODUCTS },
     { label: "Deals", href: ROUTES.DEALS },
-    { label: "New Arrivals", href: "/new-arrivals" },
-    { label: "Brands", href: "/brands" },
-    { label: "About Us", href: "/about" },
-    { label: "Contact Us", href: "/contact" },
+    { label: "New Arrivals", href: ROUTES.NEW_ARRIVALS },
+    { label: "Brands", href: ROUTES.BRANDS },
+    { label: "About Us", href: ROUTES.ABOUT },
+    { label: "Contact Us", href: ROUTES.CONTACT },
   ];
 
   return (
@@ -129,7 +129,10 @@ export default function Navbar() {
       <div className="sticky top-0 bg-white border-b border-[#F0F0F0] shadow-[0_2px_8px_rgba(0,0,0,0.04)] h-[70px] lg:h-[75px] flex items-center">
         <div className="max-w-[1400px] mx-auto w-full px-4 lg:px-6 flex items-center justify-between gap-4">
           {/* Section 1: Logo */}
-          <Link href="/" className="flex items-center gap-2 shrink-0 group">
+          <Link
+            href={ROUTES.HOME}
+            className="flex items-center gap-2 shrink-0 group"
+          >
             <div className="relative w-10 h-10 lg:w-11 lg:h-11">
               <Image
                 src={miniLogo}
@@ -166,7 +169,7 @@ export default function Navbar() {
           <div className="flex items-center gap-6 lg:gap-7">
             {/* Wishlist */}
             <Link
-              href="/wishlist"
+              href={ROUTES.WISHLIST}
               className="flex flex-col items-center gap-1 group transition-all"
             >
               <div className="relative">
@@ -205,7 +208,7 @@ export default function Navbar() {
 
             {/* Cart */}
             <Link
-              href="/cart"
+              href={ROUTES.CART}
               className="flex flex-col items-center gap-1 group transition-all"
             >
               <div className="relative">
@@ -297,7 +300,7 @@ export default function Navbar() {
                       {/* Nav Links */}
                       <div className="px-2 space-y-0.5">
                         <Link
-                          href="/profile"
+                          href={ROUTES.PROFILE}
                           className="flex items-center gap-3 px-4 py-2.5 text-[14px] text-[#333333] hover:bg-[#F5F5F5] hover:text-[#00B207] rounded-lg transition-colors"
                           onClick={() => setIsProfileOpen(false)}
                         >
@@ -308,7 +311,7 @@ export default function Navbar() {
                           My Profile
                         </Link>
                         <Link
-                          href="/orders"
+                          href={ROUTES.ORDERS}
                           className="flex items-center gap-3 px-4 py-2.5 text-[14px] text-[#333333] hover:bg-[#F5F5F5] hover:text-[#00B207] rounded-lg transition-colors"
                           onClick={() => setIsProfileOpen(false)}
                         >
@@ -319,7 +322,7 @@ export default function Navbar() {
                           My Orders
                         </Link>
                         <Link
-                          href="/wishlist"
+                          href={ROUTES.WISHLIST}
                           className="flex items-center gap-3 px-4 py-2.5 text-[14px] text-[#333333] hover:bg-[#F5F5F5] hover:text-[#00B207] rounded-lg transition-colors"
                           onClick={() => setIsProfileOpen(false)}
                         >
@@ -330,7 +333,7 @@ export default function Navbar() {
                           Wishlist
                         </Link>
                         <Link
-                          href="/profile/settings"
+                          href={ROUTES.SETTINGS}
                           className="flex items-center gap-3 px-4 py-2.5 text-[14px] text-[#333333] hover:bg-[#F5F5F5] hover:text-[#00B207] rounded-lg transition-colors"
                           onClick={() => setIsProfileOpen(false)}
                         >
@@ -373,14 +376,14 @@ export default function Navbar() {
 
                       <div className="space-y-3">
                         <Link
-                          href="/auth/login"
+                          href={ROUTES.LOGIN}
                           className="block w-full py-2.5 bg-[#00B207] text-white rounded-lg font-bold text-[14px] hover:bg-[#009606] transition-colors"
                           onClick={() => setIsProfileOpen(false)}
                         >
                           Sign In
                         </Link>
                         <Link
-                          href="/auth/signup"
+                          href={ROUTES.SIGNUP}
                           className="block w-full py-2.5 border border-[#F0F0F0] text-[#1A1A1A] rounded-lg font-bold text-[14px] hover:bg-gray-50 transition-colors"
                           onClick={() => setIsProfileOpen(false)}
                         >
@@ -571,14 +574,14 @@ export default function Navbar() {
                 ) : (
                   <div className="grid grid-cols-2 gap-3">
                     <Link
-                      href="/auth/login"
+                      href={ROUTES.LOGIN}
                       className="py-3 rounded-lg bg-[#00B207] text-white font-bold text-center"
                       onClick={() => setIsSidebarOpen(false)}
                     >
                       Login
                     </Link>
                     <Link
-                      href="/auth/signup"
+                      href={ROUTES.SIGNUP}
                       className="py-3 rounded-lg bg-gray-100 text-[#1A1A1A] font-bold text-center"
                       onClick={() => setIsSidebarOpen(false)}
                     >

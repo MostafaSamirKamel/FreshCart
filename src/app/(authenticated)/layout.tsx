@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSelector } from "react-redux";
 import { RootState } from "@/Store/store";
+import { ROUTES } from "@/Constants/app.constants";
 import {
   LayoutDashboard,
   ShoppingBag,
@@ -16,6 +17,7 @@ import {
   LogOut,
   ChevronRight,
   User,
+  Settings,
 } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { logout } from "@/Store/Slices/authSlice";
@@ -33,14 +35,14 @@ export default function ProfileLayout({
 
   const handleLogout = () => {
     dispatch(logout());
-    router.push("/auth/login");
+    router.push(ROUTES.LOGIN);
   };
 
   const menuItems = [
-    { name: "Dashboard", href: "/profile", icon: LayoutDashboard },
-    { name: "Orders", href: "/orders", icon: ShoppingBag },
-    { name: "Wishlist", href: "/wishlist", icon: Heart },
-    { name: "Favorites", href: "/favorites", icon: Star },
+    { name: "My Profile", href: ROUTES.PROFILE, icon: User },
+    { name: "Orders", href: ROUTES.ORDERS, icon: ShoppingBag },
+    { name: "Wishlist", href: ROUTES.WISHLIST, icon: Heart },
+    { name: "Settings", href: ROUTES.SETTINGS, icon: Settings },
     { name: "Addresses", href: "/profile/addresses", icon: MapPin },
     { name: "Payment Methods", href: "/profile/payments", icon: CreditCard },
     { name: "Account Details", href: "/profile/account", icon: UserPen },
@@ -48,13 +50,13 @@ export default function ProfileLayout({
 
   // Breadcrumb logic
   const getBreadcrumb = () => {
-    if (pathname === "/profile") return "Dashboard";
+    if (pathname === ROUTES.PROFILE) return "My Profile";
     if (pathname === "/profile/account") return "Account Details";
     if (pathname === "/profile/addresses") return "Addresses";
     if (pathname === "/profile/payments") return "Payment Methods";
-    if (pathname === "/orders") return "Orders";
-    if (pathname === "/wishlist") return "Wishlist";
-    if (pathname === "/favorites") return "Favorites";
+    if (pathname === ROUTES.ORDERS) return "Orders";
+    if (pathname === ROUTES.WISHLIST) return "Wishlist";
+    if (pathname === ROUTES.SETTINGS) return "Settings";
     return "";
   };
 
